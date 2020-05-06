@@ -1,22 +1,22 @@
 <template>
     <div>
-        <transition name="login">
+        <transition name="login" @after-leave="isRegisterMode=true">
             <div v-if="isLoginMode">
                 <UserInfoSubmitter :button-name="'登录'"
                                    :verify="loginVerify"
                                    :received="received"
                                    :errored="errored"/>
-                <button @click="SwitchToRegister">还未注册？点此注册↓</button>
+                <button @click="isLoginMode=false">还未注册？点此注册→</button>
             </div>
         </transition>
 
-        <transition name="register">
-            <div v-if="!isLoginMode">
-                <button @click="SwitchToLogin">已有账户？点此登录↑</button>
+        <transition name="register" @after-leave="isLoginMode=true">
+            <div v-if="isRegisterMode">
                 <UserInfoSubmitter :button-name="'注册'"
                                    :verify="registerVerify"
                                    :received="received"
                                    :errored="errored"/>
+                <button @click="isRegisterMode=false">已有账户？点此登录→</button>
             </div>
         </transition>
     </div>
@@ -42,15 +42,9 @@
             errored(e) {
                 alert("出错：" + e);
             },
-            SwitchToRegister() {
-                this.$data.isLoginMode = false;
-            },
-            SwitchToLogin() {
-                this.$data.isLoginMode = true;
-            }
         },
         data() {
-            return {isLoginMode: true}
+            return {isLoginMode: true, isRegisterMode: false}
         }
     }
 
@@ -71,16 +65,16 @@
     }
 
     .login-enter-active, .register-enter-active {
-        transition: all .2s ease .2s;
+        transition: all .2s;
     }
 
     .login-enter, .login-leave-to {
         opacity: 0;
-        transform: translateY(-10px) rotateX(-90deg);
+        transform: rotateY(-90deg);
     }
 
     .register-enter, .register-leave-to {
         opacity: 0;
-        transform: translateY(10px) rotateX(90deg);
+        transform: rotateY(90deg);
     }
 </style>
