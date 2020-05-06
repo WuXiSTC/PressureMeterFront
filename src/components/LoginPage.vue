@@ -1,20 +1,24 @@
 <template>
-    <div class="Demo">
-        <div class="Before">
-            <UserInfoSubmitter :button-name="'登录'"
-                               :verify="loginVerify"
-                               :received="received"
-                               :errored="errored"/>
-            <button @click="SwitchToRegister">还未注册？点此注册-></button>
-        </div>
-        <div class="After">
-            <UserInfoSubmitter class="After"
-                               :button-name="'注册'"
-                               :verify="registerVerify"
-                               :received="received"
-                               :errored="errored"/>
-            <button @click="SwitchToLogin">已有账户？点此登录-></button>
-        </div>
+    <div>
+        <transition name="login">
+            <div v-if="isLoginMode">
+                <UserInfoSubmitter :button-name="'登录'"
+                                   :verify="loginVerify"
+                                   :received="received"
+                                   :errored="errored"/>
+                <button @click="SwitchToRegister">还未注册？点此注册↓</button>
+            </div>
+        </transition>
+
+        <transition name="register">
+            <div v-if="!isLoginMode">
+                <button @click="SwitchToLogin">已有账户？点此登录↑</button>
+                <UserInfoSubmitter :button-name="'注册'"
+                                   :verify="registerVerify"
+                                   :received="received"
+                                   :errored="errored"/>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -39,11 +43,14 @@
                 alert("出错：" + e);
             },
             SwitchToRegister() {
-
+                this.$data.isLoginMode = false;
             },
             SwitchToLogin() {
-
+                this.$data.isLoginMode = true;
             }
+        },
+        data() {
+            return {isLoginMode: true}
         }
     }
 
@@ -59,52 +66,21 @@
 </script>
 
 <style scoped>
-    .Demo {
-        width: 533px;
-        height: 300px;
-        margin-top: 300px;
-        margin-left: 500px;
-        position: relative;
-        perspective: 800px;
-        box-sizing: border-box;
-
-
+    .login-leave-active, .register-leave-active {
+        transition: all .2s;
     }
 
-    .Before {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-repeat: no-repeat;
-        background-position: center center;
-        backface-visibility: hidden;
-        transition: 3s;
-        border: 1px solid yellow;
-
+    .login-enter-active, .register-enter-active {
+        transition: all .2s ease .2s;
     }
 
-    .After {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: #fff;
-        background-color: #fff;
-        text-indent: 2em;
-        transform: rotateY(-180deg);
-        backface-visibility: hidden;
-        transition: 3s;
-        border: 1px solid yellow;
+    .login-enter, .login-leave-to {
+        opacity: 0;
+        transform: translateY(-10px) rotateX(-90deg);
     }
 
-    .Demo:hover .Before {
-        transform: rotateY(180deg);
-    }
-
-    .Demo:hover .After {
-        transform: rotateY(0deg);
+    .register-enter, .register-leave-to {
+        opacity: 0;
+        transform: translateY(10px) rotateX(90deg);
     }
 </style>
