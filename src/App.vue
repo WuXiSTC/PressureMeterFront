@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import LoginPage from "@/components/LoginPage";
+    import LoginPage from "@/components/LoginPage/LoginPage";
 
     export default {
         name: 'App',

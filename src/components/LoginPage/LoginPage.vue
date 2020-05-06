@@ -24,7 +24,7 @@
 
 <script>
     import axios from "axios"
-    import UserInfoSubmitter from "@/components/UserInfoSubmitter";
+    import UserInfoSubmitter from "@/components/LoginPage/UserInfoSubmitter";
 
     export default {
         name: "Login",

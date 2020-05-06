@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import UserInfo from "@/components/UserInfo";
+    import UserInfo from "@/components/LoginPage/UserInfo";
 
     export default {
         name: "UserInfoSubmitter",
