@@ -1,14 +1,8 @@
 <template>
     <div>
-        <div>名称：{{test.name}}</div>
-        <div>创建时间：{{TimeStamp.toString()}}</div>
-        <div>
-            <div v-if="state==='running'">运行中</div>
-            <div v-if="state==='queueing'">排队中</div>
-            <div v-if="state==='stopped'">{{isRunned?'已完成':'未运行'}}</div>
-            <div v-if="state==='loading'">加载中</div>
-            <div v-if="state==='errored'">错误</div>
-        </div>
+        <div v-if="test.name!==undefined">名称：{{test.name}}</div>
+        <div v-if="test.id!==undefined">创建时间：{{TimeStamp.toString()}}</div>
+        <StatePane v-model="state" :is-runned="isRunned" :uuid="uuid" ref="StatePane"/>
         <div v-if="!isRunned">
             <label>
                 运行时长：<input type="number" v-model="duration">分钟
@@ -16,18 +10,22 @@
             <button :disabled="state!=='stopped'" @click="start">启动</button>
         </div>
         <button :disabled="state==='stopped'||state==='loading'" @click="stop">停止</button>
-        <button :disabled="state==='loading'" @click="refresh">刷新</button>
     </div>
 </template>
 
 <script>
     import ParseDateFromUUID from '../tools/ParseDateFromUUID'
     import axios from 'axios'
+    import StatePane from "@/components/TestPage/StatePane";
 
     export default {
         name: "ControllerPane",
+        components: {StatePane},
         props: {
-            test: Object,
+            uuid: String,
+        },
+        data() {
+            return {test: {}, duration: 30, state: "loading"}
         },
         computed: {
             TimeStamp() {
@@ -39,25 +37,18 @@
             isRunned() {
                 return (this.test.jtlpath !== undefined && this.test.jtlpath !== null)
                     || (this.test.logpath !== undefined && this.test.logpath !== null)
-            }
-        },
-        data() {
-            return {state: "loading", duration: 30}
+            },
         },
         methods: {
             refresh() {
-                this.state = 'loading';
-                axios.get('/api/Task/getState/' + this.test.id).then((response) => {
-                    let stateCode = response.data.stateCode;
-                    if (stateCode === undefined || parseInt(stateCode) === -1) {
-                        this.state = 'errored';
-                        alert("错误：任务不存在");
-                        return this.$router.push("/TestsPage")
-                    }
-                    this.state = ['queueing', 'running', 'stopped'][parseInt(stateCode)]
+                this.loading = true;
+                axios.get("/api/getTask/" + this.uuid).then((response) => {
+                    this.test = response.data;
+                    this.loading = false;
+                    this.$refs.StatePane.refresh();
                 }).catch((e) => {
-                    alert(e);
-                    this.state = 'errored'
+                    alert("错误：" + e.toString());
+                    this.$router.push("/TestsPage");
                 })
             },
             start() {
