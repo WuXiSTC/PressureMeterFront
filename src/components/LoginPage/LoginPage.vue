@@ -4,7 +4,7 @@
             <div v-if="isLoginMode">
                 <UserInfoSubmitter :button-name="'登录'"
                                    :verify="loginVerify"
-                                   :received="received"
+                                   :received="loginReceived"
                                    :errored="errored"/>
                 <button @click="isLoginMode=false">还未注册？点此注册→</button>
             </div>
@@ -14,7 +14,7 @@
             <div v-if="isRegisterMode">
                 <UserInfoSubmitter :button-name="'注册'"
                                    :verify="registerVerify"
-                                   :received="received"
+                                   :received="registerReceived"
                                    :errored="errored"/>
                 <button @click="isRegisterMode=false">已有账户？点此登录→</button>
             </div>
@@ -36,8 +36,17 @@
             registerVerify(ID, PASS) {
                 return Verify(ID, PASS, "/api/register");
             },
-            received(ok) {
-                if (ok) this.$router.push("tasks")
+            loginReceived(ok) {
+                if (ok === true || ok === "true") this.$router.push("tasks");
+                else alert("用户名或密码错误")
+            },
+            registerReceived(ok) {
+                if (ok === true || ok === "true") {
+                    alert("注册成功");
+                    this.isRegisterMode = false;
+                } else {
+                    alert("用户名已存在")
+                }
             },
             errored(e) {
                 alert("出错：" + e);
