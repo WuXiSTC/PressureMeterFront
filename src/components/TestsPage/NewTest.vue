@@ -41,11 +41,11 @@
                 axios.post("/api/Task/new/" + this.name, form, {
                     headers: {"Content-Type": "multipart/form-data"}
                 }).then(res => {
-                    if (res.data.statusCode === 200) {
+                    if (res.data.ok === true || res.data.ok === "true") {
                         this.name = "";
                         this.refresh();
                     } else {
-                        alert(res.data);
+                        alert("异常:" + res.data.message ? res.data.message : res.toString());
                     }
                     this.loading = false;
                 }).catch((e) => {
