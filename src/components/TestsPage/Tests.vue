@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-if="state==='loading'">加载中</div>
         <button @click="refresh" :disabled="state==='loading'">刷新</button>
+        <div v-if="state==='loading'">加载中</div>
         <div v-if="state==='ok'">
             <div v-for="test of tests" :key="test">
                 <Test :uuid="test[0]" :name="test[1]"/>
@@ -22,7 +22,7 @@
             return {tests: [], state: "loading"}
         },
         created() {
-            this.methods.refresh();
+            this.refresh();
         },
         methods: {
             refresh() {
@@ -30,6 +30,7 @@
                 axios.get("/api/getTasks").then((response) => {
                     this.state = "ok";
                     this.tests = JSON.parse(response.data);
+                    //TODO
                 }).catch((e) => {
                     this.state = "error";
                     console.log(e)
