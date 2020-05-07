@@ -1,10 +1,7 @@
 <template>
     <div>
         <UserInfo ref="UserInfo"/>
-        <button @click="Submit()" :disabled="waiting">{{ buttonName }}</button>
-        <transition name="waiting">
-            <div v-if="waiting">等待中</div>
-        </transition>
+        <button @click="Submit()" :disabled="waiting">{{ waiting?'等待中':buttonName }}</button>
     </div>
 </template>
 
@@ -47,11 +44,5 @@
 </script>
 
 <style scoped>
-    .waiting-enter-active, .waiting-leave-active {
-        transition: opacity .5s;
-    }
 
-    .waiting-enter, .waiting-leave-to {
-        opacity: 0;
-    }
 </style>
