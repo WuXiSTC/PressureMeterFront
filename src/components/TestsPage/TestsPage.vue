@@ -1,7 +1,17 @@
 <template>
     <div>
-        <NewTest :refresh="refresh"/>
-        <Tests ref="tests"/>
+        <transition name="new" @after-leave="isTasksMode=true">
+            <div v-if="isNewMode">
+                <NewTest :refresh="refresh"/>
+                <button @click="isNewMode=false">查看测试↓</button>
+            </div>
+        </transition>
+        <transition name="tests" @after-leave="isNewMode=true">
+            <div v-if="isTasksMode">
+                <button @click="isTasksMode=false">新建测试↑</button>
+                <Tests ref="tests"/>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -14,13 +24,32 @@
         components: {Tests, NewTest},
         methods: {
             refresh() {
+                this.isNewMode = false;
                 this.$refs.tests.refresh()
             }
+        },
+        data() {
+            return {isNewMode: false, isTasksMode: true}
         }
-
     }
 </script>
 
 <style scoped>
+    .new-leave-active, .tests-leave-active {
+        transition: all .2s;
+    }
 
+    .new-enter-active, .tests-enter-active {
+        transition: all .2s;
+    }
+
+    .new-enter, .new-leave-to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .tests-enter, .tests-leave-to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 </style>
