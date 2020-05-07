@@ -2,15 +2,18 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
         <LoginPage/>
+        <TestsPage/>
     </div>
 </template>
 
 <script>
     import LoginPage from "@/components/LoginPage/LoginPage";
+    import TestsPage from "@/components/TestsPage/TestsPage";
 
     export default {
         name: 'App',
         components: {
+            TestsPage,
             LoginPage,
         }
     }
