@@ -3,11 +3,11 @@
         <button @click="refresh" :disabled="state==='loading'">刷新</button>
         <div v-if="state==='loading'">加载中</div>
         <div v-if="state==='ok'">
-            <div v-for="test of tests" :key="test">
+            <div v-for="test of tests" :key="test[0]">
                 <Test :uuid="test[0]" :name="test[1]"/>
             </div>
         </div>
-        <div v-if="state='error'">出错</div>
+        <div v-if="state==='error'">出错</div>
     </div>
 </template>
 
@@ -29,8 +29,7 @@
                 this.state = "loading";
                 axios.get("/api/getTasks").then((response) => {
                     this.state = "ok";
-                    this.tests = JSON.parse(response.data);
-                    //TODO
+                    this.tests = response.data;
                 }).catch((e) => {
                     this.state = "error";
                     console.log(e)

@@ -37,7 +37,7 @@
                 return Verify(ID, PASS, "/api/register");
             },
             loginReceived(ok) {
-                if (ok === true || ok === "true") this.$router.push("tasks");
+                if (ok === true || ok === "true") this.$router.push("/TestsPage");
                 else alert("用户名或密码错误")
             },
             registerReceived(ok) {

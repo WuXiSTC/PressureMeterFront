@@ -1,5 +1,5 @@
 <template>
-    <div @click="detail(uuid)" class="test">
+    <div @click="this.$router.push('/TestPage/' + uuid)" class="test">
         <span>名称：{{name}}</span>
         <span>创建日期：{{TimeStamp.toString()}}</span>
     </div>
@@ -20,12 +20,6 @@
         computed: {
             TimeStamp() {
                 return ParseDateFromUUID(this.uuid)
-            }
-        },
-        methods: {
-            detail(ID) {
-                //TODO:跳转
-                console.log(ID)
             }
         }
     }
