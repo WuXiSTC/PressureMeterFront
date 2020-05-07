@@ -1,7 +1,9 @@
 <template>
-    <div @click="this.$router.push('/TestPage/' + uuid)" class="test">
-        <span>名称：{{name}}</span>
-        <span>创建日期：{{TimeStamp.toString()}}</span>
+    <div class="test">
+        <router-link :to="'/TestPage/' + uuid">
+            <span>名称：{{name}}</span>
+            <span>创建日期：{{TimeStamp.toString()}}</span>
+        </router-link>
     </div>
 </template>
 

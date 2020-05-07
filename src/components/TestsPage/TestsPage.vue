@@ -25,7 +25,6 @@
         methods: {
             refresh() {
                 this.isNewMode = false;
-                this.$refs.tests.refresh()
             }
         },
         data() {
