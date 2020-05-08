@@ -44,8 +44,9 @@
                 let tasks = {};
                 let TaskList = this.data.S2SInfo.ServerInfo.AdditionalInfo.TaskList;
                 if (TaskList === undefined) return tasks;
+                TaskList = JSON.parse(TaskList);
                 for (let id of TaskList.AllTasks) {
-                    tasks[id] = {}
+                    tasks[id] = {ID: id}
                 }
                 for (let id in TaskList.TaskStates) {
                     tasks[id] = TaskList.TaskStates[id];

@@ -7,7 +7,8 @@
                     "ServiceType": "undefined",
                     "AdditionalInfo": {
                         "AccessAddress": "master1:8080",
-                        "TaskAccN": "4"
+                        "TaskAccN": "4",
+                        "TaskList": "{\"TaskStates\":{\"2eda1130-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"2eda1130-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918089413612404}},\"AllTasks\":[\"2eda1130-90f2-11ea-9809-ade178d240c6\"]}"
                     }
                 },
                 "ResponseSendOption": {},
@@ -21,7 +22,8 @@
                         "ServiceType": "undefined",
                         "AdditionalInfo": {
                             "AccessAddress": "master1:8080",
-                            "TaskAccN": "4"
+                            "TaskAccN": "4",
+                            "TaskList": "{\"TaskStates\":{\"2eda1130-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"2eda1130-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918089413612404}},\"AllTasks\":[\"2eda1130-90f2-11ea-9809-ade178d240c6\"]}"
                         }
                     },
                     "RequestSendOption": {
@@ -36,7 +38,6 @@
             "EdgeTo": [],
             "Clients": [
                 "CLIENT1",
-                "CLIENT2",
                 "CLIENT6"
             ]
         },
@@ -47,7 +48,8 @@
                     "ServiceType": "undefined",
                     "AdditionalInfo": {
                         "AccessAddress": "master2:8080",
-                        "TaskAccN": "4"
+                        "TaskAccN": "4",
+                        "TaskList": "{\"TaskStates\":{\"3516e640-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"3516e640-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918095958768961},\"39699e90-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"39699e90-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918103845673871},\"3ea94ef0-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"3ea94ef0-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918110350639503}},\"AllTasks\":[\"3516e640-90f2-11ea-9809-ade178d240c6\",\"39699e90-90f2-11ea-9809-ade178d240c6\",\"3ea94ef0-90f2-11ea-9809-ade178d240c6\"]}"
                     }
                 },
                 "ResponseSendOption": {},
@@ -61,7 +63,8 @@
                         "ServiceType": "undefined",
                         "AdditionalInfo": {
                             "AccessAddress": "master2:8080",
-                            "TaskAccN": "4"
+                            "TaskAccN": "4",
+                            "TaskList": "{\"TaskStates\":{\"3516e640-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"3516e640-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918095958768961},\"39699e90-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"39699e90-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918103845673871},\"3ea94ef0-90f2-11ea-9809-ade178d240c6\":{\"ID\":\"3ea94ef0-90f2-11ea-9809-ade178d240c6\",\"Duration\":1800000000000,\"StateCode\":1,\"State\":\"RUNNING\",\"StartTime\":1588918110350639503}},\"AllTasks\":[\"3516e640-90f2-11ea-9809-ade178d240c6\",\"39699e90-90f2-11ea-9809-ade178d240c6\",\"3ea94ef0-90f2-11ea-9809-ade178d240c6\"]}"
                         }
                     },
                     "RequestSendOption": {
@@ -88,16 +91,6 @@
                 "ServiceType": "undefined",
                 "AdditionalInfo": {
                     "JmeterAddresses": "[\"172.30.0.14:1099\",\"172.30.0.14:1100\",\"172.30.0.14:1101\",\"172.30.0.14:1102\"]"
-                }
-            },
-            "ResponseSendOption": {}
-        },
-        "CLIENT2": {
-            "ClientInfo": {
-                "ClientID": "CLIENT2",
-                "ServiceType": "undefined",
-                "AdditionalInfo": {
-                    "JmeterAddresses": "[\"172.30.0.12:1099\",\"172.30.0.12:1100\",\"172.30.0.12:1101\",\"172.30.0.12:1102\"]"
                 }
             },
             "ResponseSendOption": {}
