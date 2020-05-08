@@ -3,8 +3,8 @@
         <div>{{title}}</div>
         <JsonViewer :value="info" :expand-depth=2
                     copyable boxed sort/>
-        <div v-for="id in tasks" :key="id">
-            <Task :task="tasks[id]"/>
+        <div v-for="(task,id) in tasks" :key="id">
+            <Task :task="task"/>
         </div>
     </div>
 </template>

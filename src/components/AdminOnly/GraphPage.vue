@@ -38,7 +38,8 @@
         created() {
             this.refresh();
             window.addEventListener('message', (e) => {
-                this.node = e.data;
+                if (e.data.S2SInfo !== undefined || e.data.ClientInfo !== undefined)
+                    this.node = e.data;
             }, false)
         }
     }
