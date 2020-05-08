@@ -1,0 +1,204 @@
+{
+    "Vertexes": {
+        "SERVER1": {
+            "S2SInfo": {
+                "ServerInfo": {
+                    "ServerID": "SERVER1",
+                    "ServiceType": "undefined",
+                    "AdditionalInfo": {
+                        "AccessAddress": "192.168.56.102:80",
+                        "TaskAccN": "4"
+                    }
+                },
+                "ResponseSendOption": {},
+                "RequestSendOption": {
+                    "Addr": "172.20.0.2:4241"
+                },
+                "Candidates": [],
+                "S2CInfo": {
+                    "ServerInfo": {
+                        "ServerID": "SERVER1",
+                        "ServiceType": "undefined",
+                        "AdditionalInfo": {
+                            "AccessAddress": "192.168.56.102:80",
+                            "TaskAccN": "4"
+                        }
+                    },
+                    "RequestSendOption": {
+                        "Addr": "172.20.0.2:4240"
+                    },
+                    "Candidates": []
+                },
+                "GraphQuerySendOption": {
+                    "Addr": "172.20.0.2:4242"
+                }
+            },
+            "EdgeTo": [
+                "SERVER2"
+            ],
+            "Clients": [
+                "CLIENT1",
+                "CLIENT2",
+                "CLIENT7",
+                "CLIENT3"
+            ]
+        },
+        "SERVER2": {
+            "S2SInfo": {
+                "ServerInfo": {
+                    "ServerID": "SERVER2",
+                    "ServiceType": "undefined",
+                    "AdditionalInfo": {
+                        "AccessAddress": "192.168.56.102:81",
+                        "TaskAccN": "4"
+                    }
+                },
+                "ResponseSendOption": {},
+                "RequestSendOption": {
+                    "Addr": "172.20.0.6:4241"
+                },
+                "Candidates": null,
+                "S2CInfo": {
+                    "ServerInfo": {
+                        "ServerID": "SERVER2",
+                        "ServiceType": "undefined",
+                        "AdditionalInfo": {
+                            "AccessAddress": "192.168.56.102:81",
+                            "TaskAccN": "4"
+                        }
+                    },
+                    "RequestSendOption": {
+                        "Addr": "172.20.0.6:4240"
+                    },
+                    "Candidates": null
+                },
+                "GraphQuerySendOption": {
+                    "Addr": "172.20.0.6:4242"
+                }
+            },
+            "EdgeTo": [
+                "SERVER1",
+                "SERVER3",
+                "SERVER1"
+            ],
+            "Clients": [
+                "CLIENT4",
+                "CLIENT5"
+            ]
+        },
+        "SERVER3": {
+            "S2SInfo": {
+                "ServerInfo": {
+                    "ServerID": "SERVER3",
+                    "ServiceType": "undefined",
+                    "AdditionalInfo": {
+                        "AccessAddress": "192.168.56.102:82",
+                        "TaskAccN": "4"
+                    }
+                },
+                "ResponseSendOption": {},
+                "RequestSendOption": {
+                    "Addr": "172.20.0.9:4241"
+                },
+                "Candidates": null,
+                "S2CInfo": {
+                    "ServerInfo": {
+                        "ServerID": "SERVER3",
+                        "ServiceType": "undefined",
+                        "AdditionalInfo": {
+                            "AccessAddress": "192.168.56.102:82",
+                            "TaskAccN": "4"
+                        }
+                    },
+                    "RequestSendOption": {
+                        "Addr": "172.20.0.9:4240"
+                    },
+                    "Candidates": null
+                },
+                "GraphQuerySendOption": {
+                    "Addr": "172.20.0.9:4242"
+                }
+            },
+            "EdgeTo": [
+                "SERVER1",
+                "SERVER2",
+                "SERVER1"
+            ],
+            "Clients": [
+                "CLIENT8"
+            ]
+        }
+    },
+    "Clients": {
+        "CLIENT1": {
+            "ClientInfo": {
+                "ClientID": "CLIENT1",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.3:1099\",\"172.20.0.3:1100\",\"172.20.0.3:1101\",\"172.20.0.3:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT2": {
+            "ClientInfo": {
+                "ClientID": "CLIENT2",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.4:1099\",\"172.20.0.4:1100\",\"172.20.0.4:1101\",\"172.20.0.4:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT3": {
+            "ClientInfo": {
+                "ClientID": "CLIENT3",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.5:1099\",\"172.20.0.5:1100\",\"172.20.0.5:1101\",\"172.20.0.5:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT4": {
+            "ClientInfo": {
+                "ClientID": "CLIENT4",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.7:1099\",\"172.20.0.7:1100\",\"172.20.0.7:1101\",\"172.20.0.7:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT5": {
+            "ClientInfo": {
+                "ClientID": "CLIENT5",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.10:1099\",\"172.20.0.10:1100\",\"172.20.0.10:1101\",\"172.20.0.10:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT7": {
+            "ClientInfo": {
+                "ClientID": "CLIENT7",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.11:1099\",\"172.20.0.11:1100\",\"172.20.0.11:1101\",\"172.20.0.11:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT8": {
+            "ClientInfo": {
+                "ClientID": "CLIENT8",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.20.0.12:1099\",\"172.20.0.12:1100\",\"172.20.0.12:1101\",\"172.20.0.12:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "nodes": {
+        "SERVER1": {
+            "color": "#6D87CF"
+        },
+        "SERVER2": {
+            "color": "#6D87CF"
+        },
+        "SERVER3": {
+            "color": "#6D87CF"
+        },
+        "SERVER4": {
+            "color": "#6D87CF"
+        },
+        "CLIENT1": {
+            "color": "#D68300"
+        },
+        "CLIENT2": {
+            "color": "#D68300"
+        },
+        "CLIENT3": {
+            "color": "#D68300"
+        },
+        "CLIENT4": {
+            "color": "#D68300"
+        },
+        "CLIENT5": {
+            "color": "#D68300"
+        },
+        "CLIENT6": {
+            "color": "#D68300"
+        },
+        "CLIENT7": {
+            "color": "#D68300"
+        },
+        "CLIENT8": {
+            "color": "#D68300"
+        }
+    },
+    "edges": {
+        "SERVER1": {
+            "SERVER2": {},
+            "SERVER3": {}
+        },
+        "SERVER2": {
+            "SERVER3": {},
+            "SERVER4": {}
+        },
+        "SERVER3": {
+            "SERVER4": {}
+        },
+        "SERVER4": {},
+        "SERVER5": {},
+        "CLIENT1": {
+            "SERVER1": {}
+        },
+        "CLIENT2": {
+            "SERVER1": {}
+        },
+        "CLIENT3": {
+            "SERVER1": {}
+        },
+        "CLIENT4": {
+            "SERVER1": {}
+        },
+        "CLIENT5": {
+            "SERVER2": {}
+        },
+        "CLIENT6": {
+            "SERVER3": {}
+        },
+        "CLIENT7": {
+            "SERVER4": {}
+        },
+        "CLIENT8": {
+            "SERVER4": {}
+        }
+    }
+}
