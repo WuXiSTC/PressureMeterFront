@@ -1,5 +1,6 @@
 <template>
     <div>
+        <button :disabled="loading" @click="refresh">刷新</button>
         <iframe v-if="!loading" ref="iframe"
                 :src="'/atlas/index.html#'+JSON.stringify(graph)"
                 title="连接图"
