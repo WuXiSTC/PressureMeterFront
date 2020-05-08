@@ -97,8 +97,11 @@
       },
 
       resize: function () {
-        var w = $(window).width(),
-          h = $(window).height();
+        let ww = $(window).width();
+        let wh = $(window).height();
+        ww = wh = ww > wh ? wh : ww;
+        ww = wh = ww > 800 ? 800 : ww;
+        var w = ww, h = wh;
         canvas.width = w; canvas.height = h // resize the canvas element to fill the screen
         particleSystem.screenSize(w, h) // inform the system so it can map coords for us
         that.redraw()
@@ -115,6 +118,10 @@
           var pos = $(this).offset();
           var p = { x: e.pageX - pos.left, y: e.pageY - pos.top }
           selected = nearest = dragged = particleSystem.nearest(p);
+          if (selected.distance >= 50) {
+            selected = nearest = dragged = null;
+            return false
+          }
 
           if (selected.node !== null) {
             dragged.node.tempMass = 50
@@ -149,6 +156,15 @@
           return false
         });
 
+        $(canvas).click(function (e) {
+          var pos = $(this).offset();
+          var p = { x: e.pageX - pos.left, y: e.pageY - pos.top }
+          let clicked = particleSystem.nearest(p);
+          if (clicked.distance >= 50) clicked = null;
+          console.log(clicked)
+          return false
+        });
+
       },
 
     }
@@ -159,21 +175,21 @@
   function refresh() {
     var sys = arbor.ParticleSystem(4000, 500, 0.5, 55)
     sys.renderer = Renderer("#viewport")
-    $.getJSON("maps/test.json", function (res) {
+    $.getJSON("/api/getGraph", function (res) {
       // load the raw data into the particle system as is (since it's already formatted correctly for .merge)
       let data = { nodes: {}, edges: {} }
       for (let cid in res.Clients) {
-        data.nodes[cid] = { color: "#D68300" }
+        data.nodes[cid] = { color: "#D68300", data: res.Clients[cid] }
         data.edges[cid] = {}
       }
       for (let id in res.Vertexes) {
-        data.nodes[id] = { color: "#6D87CF" }
+        data.nodes[id] = { color: "#6D87CF", data: res.Vertexes[id] }
         for (let idto of res.Vertexes[id].EdgeTo) {
           if (data.edges[id] === undefined) data.edges[id] = {}
           data.edges[id][idto] = {}
         }
         for (let cid of res.Vertexes[id].Clients) {
-          data.nodes[cid] = { color: "#D68300" }
+          data.nodes[cid] = { color: "#D68300", data: res.Clients[cid] }
           if (data.edges[cid] === undefined) data.edges[cid] = {}
           data.edges[cid][id] = {}
         }

@@ -1,0 +1,126 @@
+{
+    "Vertexes": {
+        "SERVER1": {
+            "S2SInfo": {
+                "ServerInfo": {
+                    "ServerID": "SERVER1",
+                    "ServiceType": "undefined",
+                    "AdditionalInfo": {
+                        "AccessAddress": "master1:8080",
+                        "TaskAccN": "4"
+                    }
+                },
+                "ResponseSendOption": {},
+                "RequestSendOption": {
+                    "Addr": "172.30.0.4:4241"
+                },
+                "Candidates": [],
+                "S2CInfo": {
+                    "ServerInfo": {
+                        "ServerID": "SERVER1",
+                        "ServiceType": "undefined",
+                        "AdditionalInfo": {
+                            "AccessAddress": "master1:8080",
+                            "TaskAccN": "4"
+                        }
+                    },
+                    "RequestSendOption": {
+                        "Addr": "172.30.0.4:4240"
+                    },
+                    "Candidates": []
+                },
+                "GraphQuerySendOption": {
+                    "Addr": "172.30.0.4:4242"
+                }
+            },
+            "EdgeTo": [],
+            "Clients": [
+                "CLIENT1",
+                "CLIENT2",
+                "CLIENT6"
+            ]
+        },
+        "SERVER2": {
+            "S2SInfo": {
+                "ServerInfo": {
+                    "ServerID": "SERVER2",
+                    "ServiceType": "undefined",
+                    "AdditionalInfo": {
+                        "AccessAddress": "master2:8080",
+                        "TaskAccN": "4"
+                    }
+                },
+                "ResponseSendOption": {},
+                "RequestSendOption": {
+                    "Addr": "172.30.0.2:4241"
+                },
+                "Candidates": null,
+                "S2CInfo": {
+                    "ServerInfo": {
+                        "ServerID": "SERVER2",
+                        "ServiceType": "undefined",
+                        "AdditionalInfo": {
+                            "AccessAddress": "master2:8080",
+                            "TaskAccN": "4"
+                        }
+                    },
+                    "RequestSendOption": {
+                        "Addr": "172.30.0.2:4240"
+                    },
+                    "Candidates": null
+                },
+                "GraphQuerySendOption": {
+                    "Addr": "172.30.0.2:4242"
+                }
+            },
+            "EdgeTo": [
+                "SERVER1"
+            ],
+            "Clients": [
+                "CLIENT4"
+            ]
+        }
+    },
+    "Clients": {
+        "CLIENT1": {
+            "ClientInfo": {
+                "ClientID": "CLIENT1",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.30.0.14:1099\",\"172.30.0.14:1100\",\"172.30.0.14:1101\",\"172.30.0.14:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT2": {
+            "ClientInfo": {
+                "ClientID": "CLIENT2",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.30.0.12:1099\",\"172.30.0.12:1100\",\"172.30.0.12:1101\",\"172.30.0.12:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT4": {
+            "ClientInfo": {
+                "ClientID": "CLIENT4",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.30.0.16:1099\",\"172.30.0.16:1100\",\"172.30.0.16:1101\",\"172.30.0.16:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        },
+        "CLIENT6": {
+            "ClientInfo": {
+                "ClientID": "CLIENT6",
+                "ServiceType": "undefined",
+                "AdditionalInfo": {
+                    "JmeterAddresses": "[\"172.30.0.11:1099\",\"172.30.0.11:1100\",\"172.30.0.11:1101\",\"172.30.0.11:1102\"]"
+                }
+            },
+            "ResponseSendOption": {}
+        }
+    }
+}
