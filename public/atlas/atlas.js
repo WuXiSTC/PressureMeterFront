@@ -97,11 +97,7 @@
       },
 
       resize: function () {
-        let ww = $(window).width();
-        let wh = $(window).height();
-        ww = wh = ww > wh ? wh : ww;
-        ww = wh = ww > 800 ? 800 : ww;
-        var w = ww, h = wh;
+        var w = $(window).width(), h = $(window).height();
         canvas.width = w; canvas.height = h // resize the canvas element to fill the screen
         particleSystem.screenSize(w, h) // inform the system so it can map coords for us
         that.redraw()
@@ -160,8 +156,8 @@
           var pos = $(this).offset();
           var p = { x: e.pageX - pos.left, y: e.pageY - pos.top }
           let clicked = particleSystem.nearest(p);
-          if (clicked.distance >= 50) clicked = null;
-          console.log(clicked)
+          if (clicked !== undefined && clicked.distance < 50)
+            window.parent.postMessage(clicked.node.data.data, "*");
           return false
         });
 
@@ -175,33 +171,32 @@
   function refresh() {
     var sys = arbor.ParticleSystem(4000, 500, 0.5, 55)
     sys.renderer = Renderer("#viewport")
-    $.getJSON("/api/getGraph", function (res) {
-      // load the raw data into the particle system as is (since it's already formatted correctly for .merge)
-      let data = { nodes: {}, edges: {} }
-      for (let cid in res.Clients) {
+    let res = JSON.parse(decodeURIComponent(location.hash.substring(1)))
+    // load the raw data into the particle system as is (since it's already formatted correctly for .merge)
+    let data = { nodes: {}, edges: {} }
+    for (let cid in res.Clients) {
+      data.nodes[cid] = { color: "#D68300", data: res.Clients[cid] }
+      data.edges[cid] = {}
+    }
+    for (let id in res.Vertexes) {
+      data.nodes[id] = { color: "#6D87CF", data: res.Vertexes[id] }
+      for (let idto of res.Vertexes[id].EdgeTo) {
+        if (data.edges[id] === undefined) data.edges[id] = {}
+        data.edges[id][idto] = {}
+      }
+      for (let cid of res.Vertexes[id].Clients) {
         data.nodes[cid] = { color: "#D68300", data: res.Clients[cid] }
-        data.edges[cid] = {}
+        if (data.edges[cid] === undefined) data.edges[cid] = {}
+        data.edges[cid][id] = {}
       }
-      for (let id in res.Vertexes) {
-        data.nodes[id] = { color: "#6D87CF", data: res.Vertexes[id] }
-        for (let idto of res.Vertexes[id].EdgeTo) {
-          if (data.edges[id] === undefined) data.edges[id] = {}
-          data.edges[id][idto] = {}
-        }
-        for (let cid of res.Vertexes[id].Clients) {
-          data.nodes[cid] = { color: "#D68300", data: res.Clients[cid] }
-          if (data.edges[cid] === undefined) data.edges[cid] = {}
-          data.edges[cid][id] = {}
-        }
-      }
-      var nodes = data.nodes
-      $.each(nodes, function (name, info) {
-        info.label = name.replace(/(people's )?republic of /i, '').replace(/ and /g, ' & ')
-      })
-
-      sys.merge({ nodes: nodes, edges: data.edges })
-      sys.parameters({ stiffness: 400 })
+    }
+    var nodes = data.nodes
+    $.each(nodes, function (name, info) {
+      info.label = name.replace(/(people's )?republic of /i, '').replace(/ and /g, ' & ')
     })
+
+    sys.merge({ nodes: nodes, edges: data.edges })
+    sys.parameters({ stiffness: 400 })
   }
 
   $(document).ready(refresh)
