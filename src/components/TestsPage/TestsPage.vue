@@ -1,14 +1,15 @@
 <template>
-    <div>
+    <div class="content">
         <transition name="new" @after-leave="isTasksMode=true">
             <div v-if="isNewMode">
                 <NewTest :refresh="refresh"/>
-                <button @click="isNewMode=false">查看测试↓</button>
+                <button @click="isNewMode=false" class="switch">查看测试↓</button>
             </div>
         </transition>
         <transition name="tests" @after-leave="isNewMode=true">
             <div v-if="isTasksMode">
-                <button @click="isTasksMode=false">新建测试↑</button>
+                <button @click="isTasksMode=false" class="switch">新建测试↑</button>
+                <h3>测试列表</h3>
                 <Tests ref="tests"/>
             </div>
         </transition>
@@ -50,5 +51,14 @@
     .tests-enter, .tests-leave-to {
         opacity: 0;
         transform: translateY(-10px);
+    }
+
+    .content {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .switch {
+        width: 400px;
     }
 </style>
