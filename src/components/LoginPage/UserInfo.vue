@@ -45,7 +45,7 @@
 
 <style scoped>
     .content, .input-content {
-        width: 300px;
+        width: 350px;
     }
 
     .input-content {
@@ -65,9 +65,10 @@
     }
 
     .ok {
-        width: 30px;
+        width: 72px;
         height: 30px;
         float: right;
+        text-align: left;
     }
 
     .text-input {
