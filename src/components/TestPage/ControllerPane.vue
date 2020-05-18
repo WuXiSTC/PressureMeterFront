@@ -1,15 +1,16 @@
 <template>
-    <div>
-        <div v-if="test.name!==undefined">名称：{{test.name}}</div>
-        <div v-if="test.id!==undefined">创建时间：{{TimeStamp.toString()}}</div>
+    <div class="content">
+        <img width="200" alt="Vue logo" src="../../assets/logo.svg">
+        <h5>测试控制面板</h5>
+        <div v-if="test.name!==undefined"><h3>{{test.name}}</h3></div>
+        <div v-if="test.id!==undefined">创建于{{TimeStamp.toLocaleString()}}</div>
         <StatePane v-model="state" :is-runned="isRunned" :uuid="uuid" ref="StatePane"/>
-        <div v-if="!isRunned">
-            <label>
-                运行时长：<input type="number" v-model="duration">分钟
-            </label>
-            <button :disabled="state!=='stopped'" @click="start">启动</button>
+        <div class="input-content" v-if="!isRunned">
+            <div class="text-label"><label for="DURATION" class="label-body">指定运行时长</label></div>
+            <input class="text-input" type="number" v-model="duration" id="DURATION">
+            <button class="start-btn" :disabled="state!=='stopped'" @click="start">开始运行</button>
         </div>
-        <button :disabled="state==='stopped'||state==='loading'" @click="stop">停止</button>
+        <button class="stop-btn" :disabled="state==='stopped'||state==='loading'" @click="stop">停止</button>
     </div>
 </template>
 
@@ -82,5 +83,38 @@
 </script>
 
 <style scoped>
+    .content {
+        text-align: center;
+        width: 400px;
+    }
 
+    .input-content {
+        text-align: center;
+    }
+
+    .text-label {
+        width: 144px;
+        display: inline;
+        text-align: right;
+        float: left;
+    }
+
+    .label-body {
+        font-size: 2.4rem;
+        font-weight: 300;
+    }
+
+    .start-btn {
+        width: 144px;
+        float: right;
+    }
+
+    .text-input {
+        display: inline;
+        width: 100px;
+    }
+
+    .stop-btn{
+        width: 400px;
+    }
 </style>
