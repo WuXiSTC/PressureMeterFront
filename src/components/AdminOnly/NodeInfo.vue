@@ -2,7 +2,7 @@
     <div>
         <div>{{title}}</div>
         <JsonViewer :value="info" :expand-depth=2
-                    copyable boxed sort/>
+                    copyable boxed sort expanded/>
         <div v-for="(task,id) in tasks" :key="id">
             <Task :task="task"/>
         </div>

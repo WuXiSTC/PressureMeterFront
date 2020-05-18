@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <button :disabled="loading" @click="refresh">刷新</button>
-        <iframe v-if="!loading" ref="iframe"
-                :src="'/atlas/index.html#'+JSON.stringify(graph)"
-                title="连接图"
-                width="800" height="600"></iframe>
-        <NodeInfo :data="node"/>
+    <div class="container">
+        <div class="graph">
+            <iframe v-if="!loading" ref="iframe"
+                    :src="'/atlas/index.html#'+JSON.stringify(graph)"
+                    title="连接图"
+                    width="100%" height="100%"></iframe>
+        </div>
+        <div class="node-info">
+            <button style="width: 100%" :disabled="loading" @click="refresh">刷新</button>
+            <NodeInfo :data="node"/>
+        </div>
     </div>
 </template>
 
@@ -47,5 +51,24 @@
 </script>
 
 <style scoped>
+    .container {
+        width: 100%;
+    }
 
+    .graph {
+        width: 65%;
+        min-width: 400px;
+        height: 600px;
+        display: inline-block;
+        float: left;
+    }
+
+    .node-info {
+        width: 30%;
+        min-width: 300px;
+        height: 600px;
+        display: inline-block;
+        padding: 5px;
+        float: right;
+    }
 </style>
