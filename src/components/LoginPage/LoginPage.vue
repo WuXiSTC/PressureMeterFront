@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="login-page">
+        <img width="300" alt="Vue logo" src="../../assets/logo.svg">
+        <h3>云压力测试系统</h3>
         <transition name="login" @after-leave="isRegisterMode=true">
             <div v-if="isLoginMode">
                 <UserInfoSubmitter :button-name="'登录'"
@@ -85,5 +87,13 @@
     .register-enter, .register-leave-to {
         opacity: 0;
         transform: rotateY(90deg);
+    }
+
+    .login-page{
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
     }
 </style>
