@@ -50,9 +50,6 @@
 
     .submit-btn {
         width: 300px;
-    }
-
-    .submit-btn {
         font-size: 2.4rem;
         font-weight: 300;
         letter-spacing: 20px;

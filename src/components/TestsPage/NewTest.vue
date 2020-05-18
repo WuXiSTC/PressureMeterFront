@@ -1,14 +1,20 @@
 <template>
-    <div>
-        <label>
-            测试名称：<input type="text" v-model="name">
-            <span v-if="!NameValid">not ok</span>
-        </label>
-        <label>
-            测试计划：<input type="file" ref="jmx" @change="changeFile">
-            <span v-if="!FileValid">not ok</span>
-        </label>
-        <button :disabled="loading||!(NameValid&&FileValid)" @click="upload">{{loading?'创建中':'创建测试'}}</button>
+    <div class="content">
+        <img width="200" alt="Vue logo" src="../../assets/logo.svg">
+        <h3>创建测试</h3>
+        <div class="input-content">
+            <div class="text-label"><label for="NAME" class="label-body">测试名称</label></div>
+            <input class="text-input" type="text" v-model="name" id="NAME">
+            <div class="ok"><img v-if="NameValid" height="30" alt="ok" src="../../assets/ok.svg"></div>
+        </div>
+        <div class="input-content">
+            <div class="text-label"><label for="FILE" class="label-body">测试计划</label></div>
+            <input class="text-input" type="file" ref="jmx" @change="changeFile" id="FILE">
+            <div class="ok"><img v-if="FileValid" height="30" alt="ok" src="../../assets/ok.svg"></div>
+        </div>
+        <button :disabled="loading||!(NameValid&&FileValid)" @click="upload"
+                class="submit-btn">{{loading?'创建中':'创建测试'}}
+        </button>
     </div>
 </template>
 
@@ -58,5 +64,43 @@
 </script>
 
 <style scoped>
+    .content, .input-content {
+        width: 400px;
+        text-align: center;
+    }
 
+    .input-content {
+        text-align: center;
+    }
+
+    .text-label {
+        width: 96px;
+        display: inline;
+        text-align: right;
+        float: left;
+    }
+
+    .label-body {
+        font-size: 2.4rem;
+        font-weight: 300;
+    }
+
+    .ok {
+        width: 96px;
+        height: 30px;
+        float: right;
+        text-align: left;
+    }
+
+    .text-input {
+        display: inline;
+        width: 184px;
+    }
+
+    .submit-btn {
+        width: 400px;
+        font-size: 2.4rem;
+        font-weight: 300;
+        letter-spacing: 20px;
+    }
 </style>
