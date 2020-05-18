@@ -13,7 +13,7 @@
             <div class="ok"><img v-if="FileValid" height="30" alt="ok" src="../../assets/ok.svg"></div>
         </div>
         <button :disabled="loading||!(NameValid&&FileValid)" @click="upload"
-                class="submit-btn">{{loading?'创建中':'创建测试'}}
+                class="submit-btn">{{loading?'创建中':'创建'}}
         </button>
     </div>
 </template>

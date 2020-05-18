@@ -8,7 +8,7 @@
         </transition>
         <transition name="tests" @after-leave="isNewMode=true">
             <div v-if="isTasksMode">
-                <button @click="isTasksMode=false" class="switch">新建测试↑</button>
+                <button @click="isTasksMode=false" class="switch">创建测试↑</button>
                 <h3>测试列表</h3>
                 <Tests ref="tests"/>
             </div>
@@ -56,6 +56,7 @@
     .content {
         width: 400px;
         margin: 0 auto;
+        text-align: center;
     }
 
     .switch {
