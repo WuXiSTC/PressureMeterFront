@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <button @click="download('jmx')">下载测试计划</button>
-        <button @click="download('jtl')">下载测试结果</button>
-        <button @click="download('log')">下载测试日志</button>
+    <div class="content">
+        <button class="btn" @click="download('jmx')">下载测试计划</button>
+        <button class="btn" @click="download('jtl')">下载测试结果</button>
+        <button class="btn" @click="download('log')">下载测试日志</button>
     </div>
 </template>
 
@@ -27,5 +27,13 @@
 </script>
 
 <style scoped>
+    .content {
+        width: 420px;
+        margin: 5px auto;
+    }
 
+    .btn {
+        width: 136px;
+        margin: auto 2px;
+    }
 </style>
