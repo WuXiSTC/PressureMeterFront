@@ -1,10 +1,9 @@
 <template>
     <div class="content">
-        <img width="200" alt="Vue logo" src="../../assets/logo.svg">
-        <h5>测试控制面板</h5>
         <div v-if="test.name!==undefined"><h3>{{test.name}}</h3></div>
         <div v-if="test.id!==undefined">创建于{{TimeStamp.toLocaleString()}}</div>
         <StatePane v-model="state" :is-runned="isRunned" :uuid="uuid" ref="StatePane"/>
+        <br>
         <div class="input-content" v-if="!isRunned">
             <div class="text-label"><label for="DURATION" class="label-body">指定运行时长</label></div>
             <input class="text-input" type="number" v-model="duration" id="DURATION">
@@ -86,6 +85,7 @@
     .content {
         text-align: center;
         width: 400px;
+        margin: auto 5px;
     }
 
     .input-content {

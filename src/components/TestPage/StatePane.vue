@@ -1,13 +1,14 @@
 <template>
-    <div>
-        <div>
+    <div class="content">
+        <div class="label">运行状态</div>
+        <div class="state">
             <div v-if="state==='running'">运行中</div>
             <div v-else-if="state==='queueing'">排队中</div>
             <div v-else-if="state==='stopped'">{{isRunned?'已完成':'未运行'}}</div>
             <div v-else-if="state==='loading'">加载中</div>
             <div v-else>错误</div>
         </div>
-        <button :disabled="state==='loading'" @click="refresh">刷新</button>
+        <button class="refresh-btn" :disabled="state==='loading'" @click="refresh">刷新</button>
     </div>
 </template>
 
@@ -56,5 +57,30 @@
 </script>
 
 <style scoped>
+    .content {
+        width: 400px;
+    }
 
+    .label, .state {
+        font-size: 2.4rem;
+        font-weight: 300;
+    }
+
+    .label {
+        width: 144px;
+        display: inline-block;
+        text-align: right;
+        float: left;
+    }
+
+    .state {
+        display: inline-block;
+        width: 100px;
+    }
+
+    .refresh-btn {
+        display: inline-block;
+        width: 144px;
+        float: right;
+    }
 </style>
