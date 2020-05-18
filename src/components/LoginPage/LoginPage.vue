@@ -1,24 +1,30 @@
 <template>
     <div class="login-page">
-        <img width="300" alt="Vue logo" src="../../assets/logo.svg">
+        <img width="200" alt="Vue logo" src="../../assets/logo.svg">
         <h3>云压力测试系统</h3>
         <transition name="login" @after-leave="isRegisterMode=true">
-            <div v-if="isLoginMode">
-                <UserInfoSubmitter :button-name="'登录'"
-                                   :verify="loginVerify"
-                                   :received="loginReceived"
-                                   :errored="errored"/>
-                <button @click="isLoginMode=false">还未注册？点此注册→</button>
+            <div v-if="isLoginMode" class="card-border">
+                <h5>用户登录</h5>
+                <div class="card">
+                    <UserInfoSubmitter :button-name="'登录'"
+                                       :verify="loginVerify"
+                                       :received="loginReceived"
+                                       :errored="errored"/>
+                    <button @click="isLoginMode=false" class="switch">还未注册？点此注册→</button>
+                </div>
             </div>
         </transition>
 
         <transition name="register" @after-leave="isLoginMode=true">
-            <div v-if="isRegisterMode">
-                <UserInfoSubmitter :button-name="'注册'"
-                                   :verify="registerVerify"
-                                   :received="registerReceived"
-                                   :errored="errored"/>
-                <button @click="isRegisterMode=false">已有账户？点此登录→</button>
+            <div v-if="isRegisterMode" class="card-border">
+                <h5>用户注册</h5>
+                <div class="card">
+                    <UserInfoSubmitter :button-name="'注册'"
+                                       :verify="registerVerify"
+                                       :received="registerReceived"
+                                       :errored="errored"/>
+                    <button @click="isRegisterMode=false" class="switch">已有账户？点此登录→</button>
+                </div>
             </div>
         </transition>
     </div>
@@ -89,11 +95,28 @@
         transform: rotateY(90deg);
     }
 
-    .login-page{
+    .login-page {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
+    }
+
+    .card {
+        margin: 0 auto;
+        width: 350px;
+    }
+
+    .card-border{
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 4px;
+        border: 1px solid #bbb;
+        width: 400px;
+    }
+
+    .switch {
+        width: 300px;
     }
 </style>
