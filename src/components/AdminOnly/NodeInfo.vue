@@ -1,22 +1,20 @@
 <template>
     <div>
         <div>{{title}}</div>
+        <Tasks v-if="tasks.length>0" :tasks="tasks"/>
         <JsonViewer :value="info" :expand-depth=2
                     copyable boxed sort expanded/>
-        <div v-for="(task,id) in tasks" :key="id">
-            <Task :task="task"/>
-        </div>
     </div>
 </template>
 
 <script>
     import 'vue-json-viewer/style.css'
     import JsonViewer from 'vue-json-viewer'
-    import Task from "@/components/AdminOnly/Task";
+    import Tasks from "@/components/AdminOnly/Tasks";
 
     export default {
         name: "NodeInfo",
-        components: {Task, JsonViewer},
+        components: {Tasks, JsonViewer},
         props: {
             data: Object
         },

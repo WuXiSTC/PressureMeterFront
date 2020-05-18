@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 import LoginPage from "@/components/LoginPage/LoginPage";
 import TestsPage from "@/components/TestsPage/TestsPage";
 import TestPage from "@/components/TestPage/TestPage";
-import TasksPage from "@/components/AdminOnly/TasksPage";
 import GraphPage from "@/components/AdminOnly/GraphPage";
 
 Vue.use(VueRouter);
@@ -15,7 +14,6 @@ const routes = [
     {path: '/LoginPage', component: LoginPage},
     {path: '/TestsPage', component: TestsPage},
     {path: '/TestPage/:uuid', component: TestPage},
-    {path: '/TasksPage', component: TasksPage},
     {path: '/GraphPage', component: GraphPage},
     {path: '/', redirect: '/LoginPage'}
 ];
