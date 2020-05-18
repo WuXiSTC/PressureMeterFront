@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="content">
         <UserInfo ref="UserInfo"/>
-        <button @click="Submit()" :disabled="waiting">{{ waiting?'等待中':buttonName }}</button>
+        <button class="submit-btn" @click="Submit" :disabled="waiting">{{ waiting?'等待中':buttonName }}</button>
     </div>
 </template>
 
@@ -44,5 +44,17 @@
 </script>
 
 <style scoped>
+    .content {
+        width: 350px;
+    }
 
+    .submit-btn {
+        width: 300px;
+    }
+
+    .submit-btn {
+        font-size: 2.4rem;
+        font-weight: 300;
+        letter-spacing: 20px;
+    }
 </style>
