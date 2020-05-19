@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>{{title}}</div>
-        <Tasks v-if="tasks.length>0" :tasks="tasks"/>
+        <Tasks v-if="Object.keys(tasks).length>0" :tasks="tasks"/>
         <JsonViewer :value="info" :expand-depth=2
                     copyable boxed sort expanded/>
     </div>

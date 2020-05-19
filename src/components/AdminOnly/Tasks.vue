@@ -3,8 +3,9 @@
         运行中的任务
         <div v-for="(task,id) in tasks" :key="id">
             <router-link :to="'/TestPage/' + task.ID">
-                <div>{{task.ID}}</div>
-                <div>{{JSON.stringify(task)}}</div>
+                <div>
+                    <span :title="JSON.stringify(task)">{{task.ID}}</span>
+                </div>
             </router-link>
         </div>
     </div>
@@ -14,7 +15,7 @@
     export default {
         name: "Tasks",
         props: {
-            tasks: Array
+            tasks: Object
         }
     }
 </script>
